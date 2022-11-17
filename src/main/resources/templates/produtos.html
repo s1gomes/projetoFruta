@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+    <head>
+        <!-- CSS only -->
+     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+        <meta http-equiv="refresh" content=1;url="localhost:8080/produto">
+         <meta charset="utf-8">
+         <meta name="viewport" content="width=device-width, initial-scale=1">
+         <title>Produtos</title>
+       </head>
+       <style>
+        body {
+         -webkit-animation: colorchange 60s infinite; 
+         animation: colorchange 60s infinite;
+     }
+     @-webkit-keyframes colorchange {
+          0%  {background: #24242c;}
+         25%  {background: #24242c;}
+         50%  {background: #24242c;}
+         75%  {background: #24242c;}
+         100% {background: #24242c;}
+     }
+     @keyframes colorchange {
+          0%  {background: #24242c;}
+         25%  {background: #24242c;}
+         50%  {background: #24242c;}
+         75%  {background: #24242c;}
+         100% {background: #24242c;}
+     }   
+       </style>
+  <body>
+    <div class="p-3 mb-2 bg-dark text-white">
+        <h1> <div style="text-align:center">Listagem de produtos</div> </h1>
+    <table class="table table-dark" border ="1">
+       <tr>
+          <td>Código do produto</td>
+          <td>Empresa</td>
+          <td>Fornecedor</td>
+          <td>Produto</td>
+          <td>Métrica</td>
+          <td>Quantidade</td>
+          <td>Preço</td>
+       </tr>
+
+
+       <tr th:each="pro : ${listaProdutos}">
+          <td th:text="${pro.id}"></td>
+          <td th:text="${emp.empresaId}"></td>
+          <td th:text="${fornecedor.fornecedorId}"></td> 
+          <td th:text="${pro.nome}"></td>
+          <td th:text="${pro.unidade}"></td>
+          <td th:text="${pro.quantidade}"></td>
+          <td th:text="${pro.preco}"></td>
+          <td><a th:href="@{/form/{id}(id=${pro.id})}"><button class="btn btn-warning">Alterar</button></a>
+         <td> <a th:href="@{/deletarProdutos/{id}(id=${pro.id})}"><button class="btn btn-danger">Deletar</button></a>
+         </td>
+          
+        
+       </tr>
+    </table>
+  </body>
+</html>

@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+    <head>
+        <!-- CSS only -->
+     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+        <meta http-equiv="refresh" content=1;url="localhost:8080/cliente">
+         <meta charset="utf-8">
+         <meta name="viewport" content="width=device-width, initial-scale=1">
+         <title>Clientes</title>
+       </head>
+       <style>
+        body {
+         -webkit-animation: colorchange 60s infinite; 
+         animation: colorchange 60s infinite;
+     }
+     @-webkit-keyframes colorchange {
+          0%  {background: #24242c;}
+         25%  {background: #24242c;}
+         50%  {background: #24242c;}
+         75%  {background: #24242c;}
+         100% {background: #24242c;}
+     }
+     @keyframes colorchange {
+          0%  {background: #24242c;}
+         25%  {background: #24242c;}
+         50%  {background: #24242c;}
+         75%  {background: #24242c;}
+         100% {background: #24242c;}
+     }   
+       </style>
+  <body>
+    <div class="p-3 mb-2 bg-dark text-white">
+        <h1> <div style="text-align:center">Listagem de Clientes</div> </h1>
+    <table class="table table-dark" border ="1">
+       <tr>
+          <td>Código do Cliente</td>
+          <td>Cliente</td>
+          <td>CPF</td>
+          <td>Telefone</td>
+          <td>Email</td>
+          <td>Data de Nascimento</td>
+          <td>Opções</td>
+       </tr>
+
+
+       <tr th:each="emp : ${listaCliente}">
+          <td th:text="${cli.id}"></td>
+          <td th:text="${cli.cliente_nome}"></td>
+          <td th:text="${cli.cpf}"></td> 
+          <td th:text="${cli.cliente_telefone}"></td>
+          <td th:text="${cli.email}"></td>
+          <td th:text="${dates.format{cli.nascimento, 'dd/MM/yyyy'}}"></td>
+         <td> <a th:href="@{/form/{id}(id=${cli.id})}"><button class="btn btn-warning">Alterar</button></a>
+         <a th:href="@{/deletarProdutos/{id}(id=${cli.id})}"><button class="btn btn-danger">Deletar</button></a>
+         </td>
+          
+        
+       </tr>
+    </table>
+  </body>
+</html>
